@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/src/provides/peliculas_provider.dart';
 import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,25 +12,21 @@ class HomePage extends StatelessWidget {
           title: Text('Películas en cines'),
           backgroundColor: Colors.indigoAccent,
           actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {}
-            )
+            IconButton(icon: Icon(Icons.search), onPressed: () {})
           ],
         ),
         body: Container(
-          child: Column(
-            children: <Widget> [
-              _swiperTarjetas()
-            ],
-          )
-        )
-    );
+            child: Column(
+          children: <Widget>[_swiperTarjetas()],
+        )));
   }
 
-  Widget _swiperTarjetas(){
+  Widget _swiperTarjetas() {
+    final peliculasProvider = new PeliculasProvider();
+    peliculasProvider.getEncines();
+
     return CardSwiper(
-      peliculas: [1,2,3,4,5],
+      peliculas: [1, 2, 3, 4, 5],
     );
   }
 }
