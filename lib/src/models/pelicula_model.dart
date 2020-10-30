@@ -4,7 +4,8 @@ class Peliculas {
   Peliculas();
 
   Peliculas.fromJsonList(List<dynamic> jsonList) {
-    if (jsonList == null) return;
+    if (jsonList == null)
+     return;
 
     for (var item in jsonList) {
       final pelicula = new Pelicula.fromJsonMap(item);
@@ -61,5 +62,14 @@ class Pelicula {
     adult = json['adult'];
     overview = json['overview'];
     releaseDate = json['release_date'];
+  }
+
+  getPosterImg(){
+
+    if ( posterPath == null ){
+      return 'https://media.jewelfeed.com/tsj-apps/tsj-catalog-local/temp-inventory-landing.jpg';
+    }else{
+    return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
   }
 }
